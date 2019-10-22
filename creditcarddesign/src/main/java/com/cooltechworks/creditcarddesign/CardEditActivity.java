@@ -4,14 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import com.cooltechworks.creditcarddesign.pager.CardFragmentAdapter;
 import com.cooltechworks.creditcarddesign.pager.CardFragmentAdapter.ICardEntryCompleteListener;
@@ -68,7 +69,7 @@ public class CardEditActivity extends AppCompatActivity {
         setKeyboardVisibility(true);
         mCreditCardView = (CreditCardView) findViewById(R.id.credit_card_view);
         Bundle args = savedInstanceState != null ? savedInstanceState : getIntent().getExtras();
-      
+
         loadPager(args);
         checkParams(args);
     }
@@ -99,10 +100,11 @@ public class CardEditActivity extends AppCompatActivity {
                 public void run() {
                     mCardAdapter.setMaxCVV(maxCvvLength);
                     mCardAdapter.notifyDataSetChanged();
-                }});
+                }
+            });
         }
 
-        int cardSide =  bundle.getInt(CreditCardUtils.EXTRA_CARD_SHOW_CARD_SIDE, CreditCardUtils.CARD_SIDE_FRONT);
+        int cardSide = bundle.getInt(CreditCardUtils.EXTRA_CARD_SHOW_CARD_SIDE, CreditCardUtils.CARD_SIDE_FRONT);
         if (cardSide == CreditCardUtils.CARD_SIDE_BACK) {
             mCreditCardView.showBack();
         }
