@@ -1,16 +1,17 @@
 package com.cooltechworks.creditcarddesign.sample;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.cooltechworks.checkoutflow.R;
-import com.cooltechworks.creditcarddesign.CreditCardView;
 import com.cooltechworks.creditcarddesign.CardEditActivity;
 import com.cooltechworks.creditcarddesign.CreditCardUtils;
+import com.cooltechworks.creditcarddesign.CreditCardView;
 
 /**
  * Created by glarencezhao on 10/23/16.
@@ -94,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onActivityResult(int reqCode, int resultCode, Intent data) {
+        super.onActivityResult(reqCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {
 //            Debug.printToast("Result Code is OK", getApplicationContext());
