@@ -12,6 +12,7 @@ import com.cooltechworks.creditcarddesign.R;
 
 import static com.cooltechworks.creditcarddesign.CreditCardUtils.CARD_NUMBER_FORMAT;
 import static com.cooltechworks.creditcarddesign.CreditCardUtils.CARD_NUMBER_FORMAT_AMEX;
+import static com.cooltechworks.creditcarddesign.CreditCardUtils.CARD_NUMBER_FORMAT_DINERS;
 import static com.cooltechworks.creditcarddesign.CreditCardUtils.EXTRA_CARD_NUMBER;
 
 /**
@@ -19,7 +20,7 @@ import static com.cooltechworks.creditcarddesign.CreditCardUtils.EXTRA_CARD_NUMB
  */
 public class CardNumberFragment extends CreditCardFragment {
 
-    EditText mCardNumberView;
+    private EditText mCardNumberView;
 
     public CardNumberFragment() {
     }
@@ -57,7 +58,8 @@ public class CardNumberFragment extends CreditCardFragment {
         mCardNumberView.setText(cardNumber);
         String rawCardNumber = cardNumber.replace(CreditCardUtils.SPACE_SEPERATOR, "");
         CreditCardUtils.CardType cardType = CreditCardUtils.selectCardType(rawCardNumber);
-        int maxLengthWithSpaces = ((cardType == CreditCardUtils.CardType.AMEX_CARD) ? CARD_NUMBER_FORMAT_AMEX : CARD_NUMBER_FORMAT).length();
+        String result = CreditCardUtils.CardType.AMEX_CARD.equals(cardType) ? CARD_NUMBER_FORMAT_AMEX : CreditCardUtils.CardType.DINERS_CARD.equals(cardType) ? CARD_NUMBER_FORMAT_DINERS : CARD_NUMBER_FORMAT;
+        int maxLengthWithSpaces = result.length();
         mCardNumberView.setSelection(cardNumber.length() > maxLengthWithSpaces ? maxLengthWithSpaces : cardNumber.length());
         mCardNumberView.addTextChangedListener(this);
 

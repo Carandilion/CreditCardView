@@ -24,9 +24,7 @@ import static com.cooltechworks.creditcarddesign.CreditCardUtils.EXTRA_CARD_HOLD
 import static com.cooltechworks.creditcarddesign.CreditCardUtils.EXTRA_CARD_NUMBER;
 import static com.cooltechworks.creditcarddesign.CreditCardUtils.EXTRA_ENTRY_START_PAGE;
 
-
 public class CardEditActivity extends AppCompatActivity {
-
 
     int mLastPageSelected = 0;
     private CreditCardView mCreditCardView;
@@ -47,7 +45,7 @@ public class CardEditActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                ViewPager pager = (ViewPager) findViewById(R.id.card_field_container_pager);
+                ViewPager pager = findViewById(R.id.card_field_container_pager);
 
                 int max = pager.getAdapter().getCount();
 
@@ -67,7 +65,7 @@ public class CardEditActivity extends AppCompatActivity {
         });
 
         setKeyboardVisibility(true);
-        mCreditCardView = (CreditCardView) findViewById(R.id.credit_card_view);
+        mCreditCardView = findViewById(R.id.credit_card_view);
         Bundle args = savedInstanceState != null ? savedInstanceState : getIntent().getExtras();
 
         loadPager(args);
@@ -114,7 +112,7 @@ public class CardEditActivity extends AppCompatActivity {
     }
 
     public void refreshNextButton() {
-        ViewPager pager = (ViewPager) findViewById(R.id.card_field_container_pager);
+        ViewPager pager = findViewById(R.id.card_field_container_pager);
 
         int max = pager.getAdapter().getCount();
 
@@ -213,7 +211,7 @@ public class CardEditActivity extends AppCompatActivity {
 
 
     public void showPrevious() {
-        final ViewPager pager = (ViewPager) findViewById(R.id.card_field_container_pager);
+        final ViewPager pager = findViewById(R.id.card_field_container_pager);
         int currentIndex = pager.getCurrentItem();
 
         if (currentIndex == 0) {
@@ -229,7 +227,7 @@ public class CardEditActivity extends AppCompatActivity {
     }
 
     public void showNext() {
-        final ViewPager pager = (ViewPager) findViewById(R.id.card_field_container_pager);
+        final ViewPager pager = findViewById(R.id.card_field_container_pager);
         CardFragmentAdapter adapter = (CardFragmentAdapter) pager.getAdapter();
 
         int max = adapter.getCount();
@@ -266,7 +264,7 @@ public class CardEditActivity extends AppCompatActivity {
         // Checks whether a hardware keyboard is available
         if (newConfig.hardKeyboardHidden == Configuration.HARDKEYBOARDHIDDEN_NO) {
 
-            RelativeLayout parent = (RelativeLayout) findViewById(R.id.parent);
+            RelativeLayout parent = findViewById(R.id.parent);
             RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) parent.getLayoutParams();
             layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, 0);
             parent.setLayoutParams(layoutParams);
@@ -275,7 +273,7 @@ public class CardEditActivity extends AppCompatActivity {
     }
 
     private void setKeyboardVisibility(boolean visible) {
-        final EditText editText = (EditText) findViewById(R.id.card_number_field);
+        final EditText editText = findViewById(R.id.card_number_field);
 
         if (!visible) {
 

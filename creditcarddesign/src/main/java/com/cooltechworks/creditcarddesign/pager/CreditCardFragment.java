@@ -1,16 +1,17 @@
 package com.cooltechworks.creditcarddesign.pager;
 
-import androidx.fragment.app.Fragment;
 import android.text.TextWatcher;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * Created by sharish on 9/1/15.
  */
-public abstract  class CreditCardFragment extends Fragment implements TextWatcher, IFocus {
+public abstract class CreditCardFragment extends Fragment implements TextWatcher, IFocus {
 
-    protected IActionListener mActionListener;
+    private IActionListener mActionListener;
 
-    public void setActionListener(IActionListener listener) {
+    void setActionListener(IActionListener listener) {
         mActionListener = listener;
     }
 
@@ -25,17 +26,17 @@ public abstract  class CreditCardFragment extends Fragment implements TextWatche
     }
 
 
-    public void onEdit(String edit) {
+    void onEdit(String edit) {
 
-        if(mActionListener != null) {
-            mActionListener.onEdit(this,edit);
+        if (mActionListener != null) {
+            mActionListener.onEdit(this, edit);
         }
 
     }
 
-    public void onComplete() {
+    void onComplete() {
 
-        if(mActionListener != null) {
+        if (mActionListener != null) {
             mActionListener.onActionComplete(this);
         }
 

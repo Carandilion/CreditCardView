@@ -2,28 +2,28 @@ package com.cooltechworks.creditcarddesign;
 
 /**
  * Created by Harish on 01/01/16.
+ * Updated by mtafrias on 23/10/19
  */
 public class CardSelector {
 
-    public static final CardSelector VISA = new CardSelector(R.drawable.card_color_round_rect_purple, R.drawable.chip, R.drawable.chip_inner, android.R.color.transparent, R.drawable.ic_billing_visa_logo, CardSelector.CVV_LENGHT_DEFAULT);
-    public static final CardSelector MASTER = new CardSelector(R.drawable.card_color_round_rect_pink, R.drawable.chip_yellow, R.drawable.chip_yellow_inner, android.R.color.transparent, R.drawable.ic_billing_mastercard_logo, CardSelector.CVV_LENGHT_DEFAULT);
-    public static final CardSelector ELO = new CardSelector(R.drawable.card_color_round_rect_default, R.drawable.chip_yellow, R.drawable.chip_yellow_inner, android.R.color.transparent, R.drawable.ic_billing_elo_logo, CardSelector.CVV_LENGHT_DEFAULT);
-    public static final CardSelector AMEX = new CardSelector(R.drawable.card_color_round_rect_green, android.R.color.transparent, android.R.color.transparent, R.drawable.img_amex_center_face, R.drawable.ic_billing_amex_logo1, CardSelector.CVV_LENGHT_AMEX);
-    public static final CardSelector DISCOVER = new CardSelector(R.drawable.card_color_round_rect_brown, android.R.color.transparent, android.R.color.transparent, android.R.color.transparent, R.drawable.ic_billing_discover_logo, CardSelector.CVV_LENGHT_DEFAULT);
-    public static final CardSelector DEFAULT = new CardSelector(R.drawable.card_color_round_rect_default, R.drawable.chip, R.drawable.chip_inner, android.R.color.transparent, android.R.color.transparent, CardSelector.CVV_LENGHT_DEFAULT);
+    private static final CardSelector VISA = new CardSelector(R.drawable.card_color_round_rect_purple, R.drawable.chip, R.drawable.chip_inner, android.R.color.transparent, R.drawable.ic_billing_visa_logo, CardSelector.CVV_LENGHT_DEFAULT);
+    private static final CardSelector MASTER = new CardSelector(R.drawable.card_color_round_rect_pink, R.drawable.chip_yellow, R.drawable.chip_yellow_inner, android.R.color.transparent, R.drawable.ic_billing_mastercard_logo, CardSelector.CVV_LENGHT_DEFAULT);
+    private static final CardSelector ELO = new CardSelector(R.drawable.card_color_round_rect_default, R.drawable.chip_yellow, R.drawable.chip_yellow_inner, android.R.color.transparent, R.drawable.ic_billing_elo_logo, CardSelector.CVV_LENGHT_DEFAULT);
+    private static final CardSelector AMEX = new CardSelector(R.drawable.card_color_round_rect_green, android.R.color.transparent, android.R.color.transparent, R.drawable.img_amex_center_face, R.drawable.ic_billing_amex_logo1, CardSelector.CVV_LENGHT_AMEX);
+    private static final CardSelector DINERS = new CardSelector(R.drawable.card_color_round_rect_brown, android.R.color.transparent, android.R.color.transparent, android.R.color.transparent, R.drawable.ic_billing_diners_logo, CardSelector.CVV_LENGHT_DEFAULT);
+    private static final CardSelector DEFAULT = new CardSelector(R.drawable.card_color_round_rect_default, R.drawable.chip, R.drawable.chip_inner, android.R.color.transparent, android.R.color.transparent, CardSelector.CVV_LENGHT_DEFAULT);
 
     public static final int CVV_LENGHT_DEFAULT = 3;
-    public static final int CVV_LENGHT_AMEX = 4;
-
+    private static final int CVV_LENGHT_AMEX = 4;
 
     private int mResCardId;
     private int mResChipOuterId;
     private int mResChipInnerId;
     private int mResCenterImageId;
     private int mResLogoId;
-    private int mCvvLength = CVV_LENGHT_DEFAULT;
+    private int mCvvLength;
 
-    public CardSelector(int mDrawableCard, int mDrawableChipOuter, int mDrawableChipInner, int mDrawableCenterImage, int logoId, int cvvLength) {
+    private CardSelector(int mDrawableCard, int mDrawableChipOuter, int mDrawableChipInner, int mDrawableCenterImage, int logoId, int cvvLength) {
         this.mResCardId = mDrawableCard;
         this.mResChipOuterId = mDrawableChipOuter;
         this.mResChipInnerId = mDrawableChipInner;
@@ -32,31 +32,31 @@ public class CardSelector {
         this.mCvvLength = cvvLength;
     }
 
-    public int getResCardId() {
+    int getResCardId() {
         return mResCardId;
     }
 
-    public void setResCardId(int mResCardId) {
+    private void setResCardId(int mResCardId) {
         this.mResCardId = mResCardId;
     }
 
-    public int getResChipOuterId() {
+    int getResChipOuterId() {
         return mResChipOuterId;
     }
 
-    public void setResChipOuterId(int mResChipOuterId) {
+    private void setResChipOuterId(int mResChipOuterId) {
         this.mResChipOuterId = mResChipOuterId;
     }
 
-    public int getResChipInnerId() {
+    int getResChipInnerId() {
         return mResChipInnerId;
     }
 
-    public void setResChipInnerId(int mResChipInnerId) {
+    private void setResChipInnerId(int mResChipInnerId) {
         this.mResChipInnerId = mResChipInnerId;
     }
 
-    public int getResCenterImageId() {
+    int getResCenterImageId() {
         return mResCenterImageId;
     }
 
@@ -64,7 +64,7 @@ public class CardSelector {
         this.mResCenterImageId = mResCenterImageId;
     }
 
-    public int getResLogoId() {
+    int getResLogoId() {
         return mResLogoId;
     }
 
@@ -72,7 +72,7 @@ public class CardSelector {
         this.mResLogoId = mResLogoId;
     }
 
-    public int getCvvLength() {
+    int getCvvLength() {
         return mCvvLength;
     }
 
@@ -80,12 +80,12 @@ public class CardSelector {
         this.mCvvLength = mCvvLength;
     }
 
-    public static CardSelector selectCardType(CreditCardUtils.CardType cardType) {
+    private static CardSelector selectCardType(CreditCardUtils.CardType cardType) {
         switch (cardType) {
             case AMEX_CARD:
                 return AMEX;
-            case DISCOVER_CARD:
-                return DISCOVER;
+            case DINERS_CARD:
+                return DINERS;
             case MASTER_CARD:
                 return MASTER;
             case VISA_CARD:
@@ -97,7 +97,7 @@ public class CardSelector {
         }
     }
 
-    public static CardSelector selectCard(String cardNumber) {
+    static CardSelector selectCard(String cardNumber) {
         if (cardNumber != null && cardNumber.length() >= 1) {
             CreditCardUtils.CardType cardType = CreditCardUtils.selectCardType(cardNumber);
             CardSelector selector = selectCardType(cardType);

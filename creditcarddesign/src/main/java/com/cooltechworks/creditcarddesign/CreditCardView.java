@@ -132,7 +132,6 @@ public class CreditCardView extends FrameLayout {
 
     }
 
-
     private void flip(final boolean ltr, boolean isImmediate) {
 
         View layoutContainer = findViewById(R.id.card_outline_container);
@@ -188,7 +187,7 @@ public class CreditCardView extends FrameLayout {
         String cardNumber = CreditCardUtils.formatCardNumber(this.mRawCardNumber, CreditCardUtils.SPACE_SEPERATOR);
 
         ((TextView) findViewById(TEXTVIEW_CARD_NUMBER_ID)).setText(cardNumber);
-        ((TextView) findViewById(TEXTVIEW_CARD_CVV_AMEX_ID)).setVisibility(mCardType == CreditCardUtils.CardType.AMEX_CARD ? View.VISIBLE : View.GONE);
+        findViewById(TEXTVIEW_CARD_CVV_AMEX_ID).setVisibility(mCardType == CreditCardUtils.CardType.AMEX_CARD ? View.VISIBLE : View.GONE);
 
         if (this.mCardType != CreditCardUtils.CardType.UNKNOWN_CARD) {
             this.post(new Runnable() {
@@ -282,11 +281,11 @@ public class CreditCardView extends FrameLayout {
         ImageView frontLogoImageView = (ImageView) cardContainer.findViewById(R.id.logo_img);
         frontLogoImageView.setImageResource(card.getResLogoId());
 
-        ImageView centerImageView = (ImageView) cardContainer.findViewById(R.id.logo_center_img);
+        ImageView centerImageView = cardContainer.findViewById(R.id.logo_center_img);
         centerImageView.setImageResource(card.getResCenterImageId());
 
 
-        ImageView backLogoImageView = (ImageView) findViewById(BACK_CARD_ID).findViewById(R.id.logo_img);
+        ImageView backLogoImageView = findViewById(BACK_CARD_ID).findViewById(R.id.logo_img);
         backLogoImageView.setImageResource(card.getResLogoId());
 
         if (changeCardColor) {
@@ -323,24 +322,23 @@ public class CreditCardView extends FrameLayout {
 
     public void showAnimation(final View cardContainer, final View v, final int drawableId) {
 
-        final View mRevealView = v;
-        mRevealView.setBackgroundResource(drawableId);
+        v.setBackgroundResource(drawableId);
 
         if (mCurrentDrawable == drawableId) {
             return;
         }
 
         int duration = 1000;
-        int cx = mRevealView.getLeft();
-        int cy = mRevealView.getTop();
+        int cx = v.getLeft();
+        int cy = v.getTop();
 
-        int radius = Math.max(mRevealView.getWidth(), mRevealView.getHeight()) * 4;
+        int radius = Math.max(v.getWidth(), v.getHeight()) * 4;
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
 
 
             Animator animator =
-                    ViewAnimationUtils.createCircularReveal(mRevealView, cx, cy, 0, radius);
+                    ViewAnimationUtils.createCircularReveal(v, cx, cy, 0, radius);
             animator.setInterpolator(new AccelerateDecelerateInterpolator());
             animator.setDuration(duration);
 
@@ -351,13 +349,13 @@ public class CreditCardView extends FrameLayout {
                 }
             }, duration);
 
-            mRevealView.setVisibility(View.VISIBLE);
+            v.setVisibility(View.VISIBLE);
             animator.start();
             mCurrentDrawable = drawableId;
 
         } else {
-            Animator anim = android.view.ViewAnimationUtils.createCircularReveal(mRevealView, cx, cy, 0, radius);
-            mRevealView.setVisibility(View.VISIBLE);
+            Animator anim = android.view.ViewAnimationUtils.createCircularReveal(v, cx, cy, 0, radius);
+            v.setVisibility(View.VISIBLE);
             anim.setDuration(duration);
             anim.start();
             anim.addListener(new AnimatorListenerAdapter() {
