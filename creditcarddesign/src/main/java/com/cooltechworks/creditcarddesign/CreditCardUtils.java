@@ -53,6 +53,7 @@ public class CreditCardUtils {
     }
 
     public static CardType selectCardType(String cardNumber) {
+        cardNumber = cardNumber.replaceAll("\\s", "");
         Pattern pCardType = Pattern.compile(PATTERN_ELO);
         if (pCardType.matcher(cardNumber).matches())
             return CardType.ELO_CARD;
