@@ -2,13 +2,13 @@ apply plugin: 'com.android.library'
 
 android {
 
-    compileSdkVersion 29
+    compileSdkVersion 30
     defaultConfig {
         vectorDrawables.useSupportLibrary = true
         minSdkVersion 16
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0.3"
+        targetSdkVersion 30
+        versionCode 3
+        versionName '1.2.0'
     }
     buildTypes {
         release {
@@ -20,7 +20,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.github.ozodrukh:CircularReveal:2.1.0'
 }

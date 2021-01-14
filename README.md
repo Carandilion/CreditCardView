@@ -8,10 +8,9 @@ CreditCardView is a rich UX custom view to accomodate Credit Cards / Debit Cards
 
 * CreditCardView which looks like below
 
-|     FRONT VIEW                |        BACK VIEW              | 
-| ----------------------------  | ----------------------------- | 
+|     FRONT VIEW                |        BACK VIEW              | |
+| ----------------------------  | ----------------------------- | |
 | ![MASTER FRONT][master_front] | ![MASTER BACK][master_back]   |
-
 * CardEditActivity which behaves as below. 
 
 <img src='https://d13yacurqjgara.cloudfront.net/users/484057/screenshots/2177105/checkout_generic.gif' width='600' height='350' />
